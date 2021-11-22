@@ -1,0 +1,215 @@
+Country,Begin,,,End,,,Damage (USD),Adjusted Damage (USD),reference
+,year,month,day,year,month,day,,,
+Canada,1961,summer,,1961,,,668000000,"4,771,428,571",http://www.ec.gc.ca/meteo-weather/default.asp?lang=En&n=6a4a3ac5-1; 1960-1980
+Iran,1962,9,1,1962,,,30000000,"214,285,714",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+China P Rep,1965,3,,1965,4,,27118000,"193,700,000",EM-DAT
+India,1965,,,1966,1,1,100000000,"666,666,667",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Uganda,1967,,,1967,1,1,200000,"1,333,333",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Tanzania,1967,,,1967,5,18,200000,"1,333,333",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Australia,1967,,,1969,,,600000000,"3,529,411,765",EM-DAT
+Botswana,1968,6,,1968,,,1000000,"6,250,000",EM-DAT
+Haiti,1968,,,1968,1,1,1000000,"6,250,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Janaica,1968,,,1968,1,1,500000,"3,125,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Lesotho,1968,,,1968,6,1,1000000,"6,250,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Dominican,1968,,,1968,8,1,5000000,"31,250,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Gambia,1968,,,1968,11,1,500000,"3,125,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Peru,1968,,,1969,5,1,10000000,"58,823,529",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Chile,1968,8,,1972,,,55000000,"289,473,684",EM-DAT
+Afghanisan,1969,1,1,1969,1,,200000,"1,176,471","Misdaq,N.(2006),Afghanistan: Political Frailty and External Interference.Oxon;New York:Routledge,85."
+Burkina Faso,1969,4,,1969,8,7,200000,"1,176,471",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Senegal,1969,,,1969,1,1,5000000,"29,411,765",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Niger,1969,,,1969,5,1,5000000,"29,411,765",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Mali,1969,,,1969,5,29,5000000,"29,411,765",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Mali,1969,,,1969,6,14,1000000,"5,882,353",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Somalia,1969,,,1969,9,4,500000,"2,941,176",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Ethiopia,1969,,,1969,9,12,1000000,"5,882,353",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Chad,1969,,,1969,10,7,100000,"588,235",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Jordan,1969,,,1970,1,1,1500000,"8,333,333",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Burkina Faso,1969,,,1971,1,1,3000000,"15,789,474",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Iraq,1969,,,1971,1,1,2000000,"10,526,316",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Mali,1969,,,1971,1,1,1500000,"7,894,737",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Mauritania,1969,,,1971,1,1,1500000,"7,894,737",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Niger,1969,,,1971,1,1,200000,"1,052,632",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Senegal,1969,,,1971,1,1,1500000,"7,894,737",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Burkina Faso,1969,,,1972,1,1,2500000,"13,157,895",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Mauritania,1969,,,1972,1,1,1500000,"7,894,737",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Niger,1969,,,1972,1,1,500000,"2,631,579",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Niger,1969,,,1973,4,3,94000000,"470,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Mali,1969,,,1973,4,9,106000000,"530,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Chad,1969,,,1973,4,25,83000000,"415,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Burkina Faso,1969,,,1973,5,1,700000000,"3,500,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Mauritania,1969,,,1973,5,7,34000000,"170,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Senegal,1969,,,1973,5,8,74800000,"374,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Brazil,1970,,,1970,8,7,100000,"555,556",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Ghana,1971,1,,1971,,,100000,"526,316",EMDAT
+Morocco,1971,1,,1971,,,100000,"526,316",EMDAT
+Togo,1971,1,,1971,,,500000,"2,631,579",EMDAT
+Cameroon,1971,,,1971,1,1,1500000,"7,894,737",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Gambia,1971,,,1971,1,1,200000,"1,052,632",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Kenya,1971,,,1971,1,1,1500000,"7,894,737",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Afghanisan,1971,8,7,1973,,,30000000,"150,000,000",EMDAT
+India,1972,,,1973,1,1,100000000,"500,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Nepal,1972,,,1973,1,1,10000000,"50,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Indonedia,1972,,,1973,4,9,70000000,"350,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Honduras,1972,,,1973,4,27,7000000,"35,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+India,1972,,,1973,,,100000000,"500,000,000",EMDAT
+Ethiopia,1973,12,,1978,,,76000000,"253,333,333",EMDAT
+Senegal,1977,,,1978,3,14,300000000,"1,000,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Canada,1977,1,,1980,,,3000000000,"7,894,736,842",EMDAT
+Indonedia,1978,,,1978,4,27,1200000,"4,000,000",EMDAT
+Brazil,1978,,,1978,,,2300000000,"7,666,666,667",EMDAT
+Mauritania,1978,,,1979,4,7,25500000,"77,272,727",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+India,1979,,,1979,,,200000000,"606,060,606",EMDAT
+USA,1980,6,11,1980,11,30,"10,000,000,000","26,315,789,474",U.S.GOV
+Spain,1980,,,1983,,,1500000000,"3,260,869,565",EMDAT
+Spain,1981,,,1981,,,1460000000,"3,476,190,476",EMDAT
+Australia,1981,,,1982,,,6000000000,"13,636,363,636",EMDAT
+Australia,1982,,,1983,,,7420000000,"16,130,434,783",http://www.australia.gov.au/about-australia/australian-story/natural-disasters
+Zimbabwe,1982,10,,1984,,,1000000,"2,083,333",EMDAT
+Bolivia,1983,2,,1983,6,,"48,400,000","105,217,391",http://pdf.usaid.gov/pdf_docs/pbaab204.pdf
+Portugal,1983,4,,1983,,,95000000,"206,521,739",EMDAT
+United States,1983,6,1,1983,8,31,"3,000,000,000","6,521,739,130",U.S.GOV
+Peru,1983,,,1983,6,3,151800000,"330,000,000",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Fiji,1983,,,1983,,,30000000,"34,883,721",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+Bolivia,1983,,,1984,,,"500,000,000","1,041,666,667",http://pdf.usaid.gov/pdf_docs/pbaab304.pdf
+Benin,1983,1,,1985,,,651000,"145,108,163",EMDAT
+Nigeria,1983,6,,1985,,,71103000,"2,040,816,327",EMDAT
+Canada,1984,1,,1985,3,,1000000000,"1,328,571,429",EMDAT
+Brazil,1985,11,,1985,,,651000000,"4,081,632,653",EMDAT
+United States,1986,6,1,1986,8,31,"2,000,000,000","4,000,000,000",U.S.GOV
+Hungary,1986,6,,1986,9,,500000000,"1,000,000,000",EMDAT
+Canada,1988,1,,1988,,,810000000,"1,500,000,000",EMDAT
+United States,1988,6,1,1988,8,31,"20,000,000,000","37,037,037,037",U.S.GOV
+China P Rep,1988,6,,1988,,,942887000,"1,746,087,037",EMDAT
+Bolivia,1988,10,,1988,,,48400000,"89,629,630",Office of U.S. Foreign Disaster Assistance (August 1993). Significant Data on Major Disasters Worldwide 1900-present
+United States,1989,6,1,1989,11,30,"2,000,000,000","3,508,771,930",U.S.GOV
+France,1989,7,,1989,8,,1600000000,"2,807,017,544",EMDAT
+Greece,1990,3,,1990,3,,1000000000,"1,666,666,667",EMDAT
+Peru,1990,8,,1990,,,36000000,"60,000,000",EMDAT
+Philippines,1990,12,,1992,7,,64000000,"100,000,000",EMDAT
+Spain,1990,9,,1995,,,4500000000,"6,428,571,429",EMDAT
+Swaziland,1990,11,,1995,,,1739000,"2,484,286",EMDAT
+Chile,1991,1,,1991,5,,200000000,"322,580,645",EMDAT
+United States,1991,3,1,1991,8,31,"3,000,000,000","4,838,709,677",
+Australia,1991,,,1991,,,473000000,"762,903,226",EMDAT
+Mozambique,1991,3,,1992,3,,50000000,"78,125,000",EMDAT
+Namibia,1991,,,1992,3,,50000000,"78,125,000",EMDAT
+South Africa,1991,,,1992,3,,1000000000,"1,562,500,000",EMDAT
+Lao P Dem Rep,1991,7,,1993,,,1000000,"1,515,152",EMDAT
+Zimbabwe,1991,4,,1995,,,50000000,"71,428,571",EMDAT
+Australia,1991,,,1995,,,3900000000,"5,571,428,571",http://www.australia.gov.au/about-australia/australian-story/natural-disasters
+Denmark,1992,5,,1992,7,,751700000,"1,174,531,250",EMDAT
+Hungary,1992,5,,1992,8,,384000000,"600,000,000",EMDAT
+Lithuania,1992,6,,1992,7,,52900000,"82,656,250",EMDAT
+Peru,1992,,,1992,7,14,250000000,"390,625,000",EMDAT
+China P Rep,1992,,,1993,,,53200000,"80,606,061",EMDAT
+Australia,1992,12,,1995,12,,1500000000,"2,142,857,143",EMDAT
+United States,1993,6,1,1993,8,31,"1,000,000,000","1,515,151,515",U.S.GOV
+Thailand,1993,,,1993,,,2000000,"3,030,303",EMDAT
+New Zealand,1994,1,,1994,8,,100000000,"147,058,824",EMDAT
+China P Rep,1994,1,,1994,12,,13755200000,"20,228,235,294",EMDAT
+Costa Rica,1994,7,,1994,9,,1000000,"1,470,588",EMDAT
+El Salvador,1994,7,,1994,9,,1000000,"1,470,588",EMDAT
+Guatemala,1994,7,,1994,9,,10000000,"14,705,882",EMDAT
+Honduras,1994,7,,1994,9,,10000000,"14,705,882",EMDAT
+Nicaragua,1994,7,,1994,9,,16000000,"23,529,412",EMDAT
+Puerto Rico,1994,7,,1994,9,,2000000,"2,941,176",EMDAT
+Cambodia,1994,6,,1996,,,100000000,"138,888,889",EMDAT
+China P Rep,1995,1,,1995,8,,12800000,"18,285,714",EMDAT
+Mexico,1995,6,,1995,6,,100000000,"142,857,143",EMDAT
+United Sates,1996,2,7,1996,8,31,"2,000,000,000","2,777,777,778",U.S.GOV
+India,1996,3,,1996,4,,542400000,"753,333,333",EMDAT
+Mexico,1996,5,,1996,,,1200000000,"1,666,666,667",EMDAT
+France,1997,4,,1997,,,10000000,"13,513,514",EMDAT
+Italy,1997,4,,1997,,,800000000,"1,081,081,081",EMDAT
+Portugal,1997,4,,1997,,,10000000,"13,513,514",EMDAT
+China P Rep,1997,5,,1997,8,,169100000,"228,513,514",EMDAT
+Indonesia,1997,9,,1997,11,,88000000,"118,918,919",EMDAT
+Nicaragua,1997,9,,1997,,,2000000,"2,702,703",EMDAT
+Guyana,1997,7,,1998,,,29000000,"39,189,189",EMDAT
+Viet Nam,1997,12,,1998,6,,407000000,"550,000,000",EMDAT
+Cuba,1998,1,,1998,,,180000000,"243,243,243",EMDAT
+Costa Rica,1998,5,,1998,,,23000000,"31,081,081",EMDAT
+El Salvador,1998,5,,1998,,,170000000,"229,729,730",EMDAT
+United Sates,1998,6,1,1998,8,31,"4,000,000,000","5,405,405,405",U.S.GOV
+Ethiopia,1998,7,,1998,,,15600000,"21,081,081",EMDAT
+Uganda,1998,1,,1999,,,1600000,"2,105,263",EMDAT
+Brazil,1998,4,,1999,,,122000000,"160,526,316",EMDAT
+Namibia,1998,12,,1999,,,1000000,"1,315,789",EMDAT
+Mauritius,1999,1,,1999,4,,175000000,"230,263,158",EMDAT
+Israel,1999,4,,1999,,,75000000,"98,684,211",EMDAT
+Spain,1999,4,,1999,,,3200000000,"4,210,526,316",EMDAT
+United Sates,1999,6,1,1999,8,31,"2,000,000,000","2,631,578,947",U.S.GOV
+Mexico,1999,5,,2000,,,100000000,"126,582,278",EMDAT
+Uruguay,1999,6,,2000,,,250000000,"316,455,696",EMDAT
+Iran Islam Rep,1999,4,,2001,,,3300000000,"4,074,074,074",EMDAT
+Morocco,1999,6,,2001,,,900000000,"1,111,111,111",EMDAT
+Pakistan,1999,11,,2003,,,247000000,"294,047,619",EMDAT
+United Sates,2000,3,1,2000,11,30,"5,000,000,000","6,329,113,924",U.S.GOV
+Jamaica,2000,3,,2000,,,6000000,"7,594,937",EMDAT
+China P Rep,2000,4,,2000,,,796115000,"1,007,740,506",EMDAT
+Armenia,2000,6,,2000,,,100000000,"126,582,278",EMDAT
+Romania,2000,6,,2000,,,500000000,"632,911,392",EMDAT
+Bosnia-Hercegovenia,2000,8,,2000,,,158000000,"200,000,000",EMDAT
+Azerbaijan,2000,10,,2000,,,100000000,"126,582,278",EMDAT
+India,2000,4,,2001,,,588000000,"725,925,926",EMDAT
+Tajikistan,2000,5,,2001,,,57000000,"70,370,370",EMDAT
+Uzbekistan,2000,8,,2001,8,,50000000,"61,728,395",EMDAT
+Georgia,2000,8,,2001,,,200000000,"246,913,580",EMDAT
+Afghanistan,2000,5,,2002,,,50000,"60,976",EMDAT
+United States,2000,6,,2002,,,1100000000,"1,341,463,415",EMDAT
+El Salvador,2001,5,,2001,,,22400000,"27,654,321",EMDAT
+Guatemala,2001,9,,2001,,,14000000,"17,283,951",EMDAT
+Cambodia,2002,1,,2002,7,,38000000,"46,341,463",EMDAT
+Thailand,2002,2,,2002,,,2300000,"2,804,878",EMDAT
+United Sates,2002,3,1,2002,11,30,"9,000,000,000","10,975,609,756",U.S.GOV
+Philippines,2002,3,,2002,3,,453000,"552,439",EMDAT
+Australia,2002,4,,2002,11,,2000000000,"2,439,024,390",EMDAT
+Mexico,2002,4,,2002,,,210000000,"256,097,561",EMDAT
+Viet Nam,2002,5,,2002,,,200000000,"243,902,439",EMDAT
+China P Rep,2002,6,1,2002,10,30,1210000000,"1,475,609,756",EMDAT
+India,2002,7,,2002,,,910722000,"1,110,636,585",EMDAT
+Croatia,2003,2,,2003,2,,330000000,"392,857,143",EMDAT
+United Sates,2003,3,1,2003,11,30,"5,000,000,000","5,952,380,952",U.S.GOV
+Bosnia-Hercegovenia,2003,5,,2003,,,140000000,"166,666,667",EM-DAT
+Argentina,2003,6,,2003,9,,120000000,"142,857,143",EMDAT
+Hungary,2003,7,,2003,8,,100000000,"119,047,619",EMDAT
+Indonesia,2003,8,,2003,9,,1000000,"1,190,476",EMDAT
+Cuba,2004,8,,2004,,,3139000,"3,608,046",EMDAT
+Portugal,2004,9,,2005,,,1338136000,"1,486,817,778",EMDAT
+Brazil,2004,12,,2005,3,,1650000000,"1,833,333,333",EMDAT
+Thailand,2005,1,,2005,3,,420000000,"466,666,667",EMDAT
+United Sates,2005,3,1,2005,8,31,"2,000,000,000","2,222,222,222",U.S.GOV
+Viet Nam,2005,5,,2005,,,42120000,"46,800,000",EMDAT
+United Sates,2006,3,1,2006,8,31,"6,000,000,000","6,521,739,130",U.S.GOV
+China P Rep,2006,5,1,2006,9,10,2910000000,"3,163,043,478",EMDAT
+Lithuania,2006,8,,2006,,,225573000,"245,188,043",EMDAT
+United Sates,2007,6,1,2007,11,30,"3,000,000,000","3,157,894,737",U.S.GOV
+Moldova Rep,2007,,,2007,,,406000000,"427,368,421",EMDAT
+United Sates,2008,1,1,2008,12,31,"7,000,000,000","70,707,071",U.S.GOV
+China P Rep,2008,11,,2009,2,,234000000,"238,775,510",EMDAT
+United Sates,2009,1,1,2009,12,31,"4,000,000,000","4,081,632,653",U.S.GOV
+El Salvador,2009,,12,2009,,,27000000,"27,551,020",EMDAT
+China P Rep,2009,10,,2010,5,,3600000000,"3,600,000,000",EMDAT
+Ecuador,2009,11,,2010,,,1700000,"1,700,000",EMDAT
+Guyana,2010,1,,2010,6,,14700000,"14,700,000",EMDAT
+Russia,2010,4,,2010,8,,1400000000,"1,400,000,000",EMDAT
+Bolivia,2010,6,,2010,9,,100000000,"100,000,000",EMDAT
+China P Rep,2010,12,,2011,5,,2370000000,"2,300,970,874",EMDAT
+Afghanistan,2011,1,,2011,8,,142000000,"137,864,078",EMDAT
+United Sates,2011,3,1,2011,8,31,"12,000,000,000","11,650,485,437",U.S.GOV
+United Sates,2012,1,1,2012,12,31,"30,000,000,000","28,571,428,571",U.S.GOV
+Ukraine,2012,4,15,2012,7,31,1690000000,"1,609,523,810",EMDAT
+Italy,2012,6,1,2012,10,10,1190000000,"1,133,333,333",EMDAT
+Russia,2012,6,,2012,9,,1140000000,"1,085,714,286",EMDAT
+Brazil,2012,5,,2013,5,,1460000000,"1,364,485,981",EMDAT
+New Zealand,2013,1,,2013,5,,823000000,"769,158,879",EMDAT
+Panama,2013,1,,2013,5,,200000000,"186,915,888",EMDAT
+United Sates,2013,3,1,2013,11,30,"10,000,000,000","9,345,794,393",U.S.GOV
+Namibia,2013,1,,2014,1,,64000000,"58,715,596",EMDAT
+United Sates,2014,1,1,2014,12,31,"4,000,000,000","3,669,724,771",U.S.GOV
+Brazil,2014,1,,2014,4,,5000000000,"4,587,155,963",EMDAT
+Sri Lanka,2014,1,,2014,8,,25000000,"22,935,780",EMDAT
+China P Rep,2014,6,,2014,7,,1180000000,"1,082,568,807",EMDAT
+China P Rep,2014,8,,2014,10,,2500000000,"2,293,577,982",EMDAT
+Guatemala,2014,8,,2014,,,100000000,"91,743,119",EMDAT
