@@ -8,6 +8,8 @@ library(RColorBrewer) #for some more colors
 library(maps) #for the base map data
 library(hrbrthemes) #for the fonts in ggplot
 library("wesanderson")
+library(ggsn)
+
 
 
 #LOADING THE DATASETS ----
@@ -134,7 +136,7 @@ sea_damage$Mean_damage <- sea_damage$Mean_damage / 1000000 #making the numbers i
 
 sea_damage$Country
 
-# Staring to map it----
+# MAP SET UP----
 
 Sea_2 <- c("Cambodia", "Indonesia", "Malaysia",
            "Philippines", "Thailand", "Vietnam")
@@ -147,55 +149,107 @@ Sea_flood_p <- left_join(sea_map, sea_pop, by = c("region" = "Country"))
 
 str(Sea_flood_p)
 
-scales::show_col(c("#9DBF9E", "#A84268", "#FCB97D", "#C0BCB5", "#4A6C6F", "#FF5E5B"))
+## Adding centroids:----
+centroids <- read.csv("Datasets/centroids.csv") #reading centroid data
+head(centroids)
+str(centroids) 
 
-(Sea_flood_pmap <- ggplot() +
+centroids_sea <- centroids %>% 
+  filter(name %in% Sea_2) %>% 
+  dplyr::select(name, Longitude, Latitude, iso_a3) 
+
+centroids_sea["1", "Longitude"] <- 114 #here we are individually changing the values in a specific box
+
+centroids_sea["1", "Latitude"] <- -1
+
+centroids_sea["3", "Longitude"] <- 102.5 #here we are individually changing the values in a specific box
+
+centroids_sea["3", "Latitude"] <- 3.53
+
+centroids_sea["4", "Longitude"] <- 121.5 #here we are individually changing the values in a specific box
+
+centroids_sea["4", "Latitude"] <- 17
+
+## Making the two maps----
+
+### Population----
+
+(sea_pop_map <- ggplot() +
     geom_polygon(data = Sea_flood_p, aes(x = long, y = lat, group = group, fill = Mean_affected_pop) 
                  , color="black", size = 0.2) + #plot the data points on the map
     theme_void() + #choosing what type of background we want to display 
+    coord_map() +
+    geom_text(data = centroids_sea, aes(Longitude, Latitude, label = iso_a3), size = 2.9) +
     #scale_fill_gradientn(colors = c("#9DBF9E", "#FCB97D", "#A84268"), na.value = "grey80")+
-    scale_fill_gradientn(colors = c("#86bbbd", "#76949f", "#6a6b83", "#5f506b", "#533747"), na.value = "grey80")+
-    theme(text = element_text(family = "Futura-Bold", size = 18),
+    scale_fill_gradientn(colors = c("#94d2bd", "#0a9396", "#005f73"), na.value = "grey80")+
+    theme(plot.title = element_text(family = "Futura-Bold", size = 20),
           legend.position = c(0.87, 0.57),
-          legend.title = element_text(family = "Futura-Bold", size = 16),
+          legend.title = element_text(family = "Futura-Bold", size = 14),
           legend.text = element_text(family = "Futura-Medium", size = 12), 
           plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
+    theme(plot.title = element_text(hjust= 1, size = 20)) +
     labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
          fill = "Affected \npopulation ("~x10^5~ ")",
-         title = "Population affected by flooding in South East Asia from 1980 to 2014"))
-ggsave(plot = Sea_flood_pmap, filename = "img/affected_populatio_sea.png", width = 12, height = 8)
-# LINK INSERT MAP: https://upgo.lab.mcgill.ca/2019/12/13/making-beautiful-maps/
+         title = "\nPopulation affected by flooding in South East Asia from 1980 to 2014"))
 
-scale_fill_gradientn(colors = c("#e9d8a6", "#ee9b00", "#ca6702", "#ae2012", "#9b2226"), na.value = "grey80")+
-  
+#ggsave(plot = sea_pop_map, filename = "img/affected_populatio_sea.png", width = 12, height = 8)
+
+### Damage----
 
 Sea_flood_d <- left_join(sea_map, sea_damage, by = c("region" = "Country")) 
-
 str(Sea_flood_d)
 
-(Sea_flood_dmap <- ggplot() +
-    geom_polygon(data = Sea_flood_d, aes(x = long, y = lat, group = group, fill = Mean_damage) 
-                 , color="black", size = 0.3) + #plot the data points on the map
-    theme_minimal() + #choosing what type of background we want to display 
-    scale_fill_viridis(direction = -1) +
-    coord_map())  #making the projection nice
-
-
-(Sea_flood_dmap <- ggplot() +
+(sea_dam_map <- ggplot() +
     geom_polygon(data = Sea_flood_d, aes(x = long, y = lat, group = group, fill = Mean_damage) 
                  , color="black", size = 0.2) + #plot the data points on the map
-    theme_void() + #choosing what type of background we want to display 
-    scale_fill_gradientn(colors = c("#9DBF9E", "#FCB97D", "#A84268"), na.value = "grey80")+
-    theme(text = element_text(family = "Futura-Bold", size = 18),
+    theme_void() + #choosing what type of background we want to display
+    coord_map() +
+    scale_fill_gradientn(colors = c("#ee9b00", "#bb3e03", "#ae2012"), na.value = "grey80") +
+    geom_text(data = centroids_sea, aes(Longitude, Latitude, label = iso_a3), size = 2.9) +
+    theme(plot.title = element_text(family = "Futura-Bold", size = 20),
           legend.position = c(0.87, 0.57),
-          legend.title = element_text(family = "Futura-Bold", size = 16),
+          legend.title = element_text(family = "Futura-Bold", size = 14),
           legend.text = element_text(family = "Futura-Medium", size = 12), 
           plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
+    theme(plot.title = element_text(hjust= 1, size = 20)) +
     labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
-         fill = "Dollars of \nDamage (millions)",
-         title = "Damage caused by flooding in South East Asia from 1980 to 2014"))
-ggsave(plot = Sea_flood_pmap, filename = "img/damage_sea.png", width = 12, height = 8)
+         fill = "Damage \n(million USD)",
+         title = "\nDamage caused by flooding in South East Asia from 1980 to 2014"))
+
+#ggsave(plot = sea_dam_map, filename = "img/damage_$_sea.png", width = 12, height = 8)
+
+## Adding scale----
+
+### Population----
+(sea_pop_map2 <- sea_pop_map +
+   ggsn::scalebar(data = sea_map,
+                  transform = TRUE, dist = 500, dist_unit = "km", model='WGS84',
+                  height = 0.009, location = "bottomleft", st.dist = 0.06))
+#ggsave(plot = sea_pop_map2, filename = "img/affected_populatio_sea.png", width = 12, height = 8)
+
+### Damage----
+(sea_dam_map2 <- sea_dam_map +
+   ggsn::scalebar(data = sea_map,
+                  transform = TRUE, dist = 500, dist_unit = "km", model='WGS84',
+                  height = 0.009, location = "bottomleft", st.dist = 0.06))
+
+#ggsave(plot = sea_dam_map2, filename = "img/damage_$_sea.png", width = 12, height = 8)
+
+## Making an insert map---- 
 
 
 
-  
+
+
+# LINK INSERT MAP: https://upgo.lab.mcgill.ca/2019/12/13/making-beautiful-maps/
+
+
+
+
+
+
+
+
+
+
+
