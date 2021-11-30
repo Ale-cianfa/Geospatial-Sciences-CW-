@@ -12,4 +12,5 @@ Repository containing all of the work for the Geospatial Sciences course work
 
 ## Outcomes:
 - Affected population in South East Asia 
+
 ![](https://github.com/Ale-cianfa/Geospatial_Sciences/blob/main/img/affected_populatio_sea.png)
