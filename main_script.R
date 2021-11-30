@@ -151,20 +151,23 @@ scales::show_col(c("#9DBF9E", "#A84268", "#FCB97D", "#C0BCB5", "#4A6C6F", "#FF5E
 
 (Sea_flood_pmap <- ggplot() +
     geom_polygon(data = Sea_flood_p, aes(x = long, y = lat, group = group, fill = Mean_affected_pop) 
-                 , color="black", size = 0.1) + #plot the data points on the map
+                 , color="black", size = 0.2) + #plot the data points on the map
     theme_void() + #choosing what type of background we want to display 
-    scale_fill_gradientn(colors = c("#9DBF9E", "#FCB97D", "#A84268"), na.value = "grey80")+
-    theme(text = element_text(family = "Futura-Bold"),
-          legend.position = c(0.87, 0.75),
-          legend.title = element_text(family = "Futura-Bold", size = 10),
-          legend.text = element_text(family = "Futura-Medium", size = 10)) +
+    #scale_fill_gradientn(colors = c("#9DBF9E", "#FCB97D", "#A84268"), na.value = "grey80")+
+    scale_fill_gradientn(colors = c("#86bbbd", "#76949f", "#6a6b83", "#5f506b", "#533747"), na.value = "grey80")+
+    theme(text = element_text(family = "Futura-Bold", size = 18),
+          legend.position = c(0.87, 0.57),
+          legend.title = element_text(family = "Futura-Bold", size = 16),
+          legend.text = element_text(family = "Futura-Medium", size = 12), 
+          plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
     labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
-         fill = "Affected population",
+         fill = "Affected \npopulation ("~x10^5~ ")",
          title = "Population affected by flooding in South East Asia from 1980 to 2014"))
-
+ggsave(plot = Sea_flood_pmap, filename = "img/affected_populatio_sea.png", width = 12, height = 8)
 # LINK INSERT MAP: https://upgo.lab.mcgill.ca/2019/12/13/making-beautiful-maps/
 
-
+scale_fill_gradientn(colors = c("#e9d8a6", "#ee9b00", "#ca6702", "#ae2012", "#9b2226"), na.value = "grey80")+
+  
 
 Sea_flood_d <- left_join(sea_map, sea_damage, by = c("region" = "Country")) 
 
