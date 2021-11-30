@@ -11,6 +11,6 @@ Repository containing all of the work for the Geospatial Sciences course work
   - Could do a map for drought and one for flooding in a specific region and then make a couple of scatter plots to see if that has changed over the years (with different countries in diff colors on the same scatter plot, so 2 plots and 2 choropleth maps) 
 
 ## Outcomes:
-- Affected population in South East Asia 
-
 ![](https://github.com/Ale-cianfa/Geospatial_Sciences/blob/main/img/affected_populatio_sea.png)
+![](https://github.com/Ale-cianfa/Geospatial_Sciences/blob/main/img/damage_%24_sea.png)
+
