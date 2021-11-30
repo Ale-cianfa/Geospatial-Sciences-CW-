@@ -180,7 +180,21 @@ str(Sea_flood_d)
     scale_fill_viridis(direction = -1) +
     coord_map())  #making the projection nice
 
-  
+
+(Sea_flood_dmap <- ggplot() +
+    geom_polygon(data = Sea_flood_d, aes(x = long, y = lat, group = group, fill = Mean_damage) 
+                 , color="black", size = 0.2) + #plot the data points on the map
+    theme_void() + #choosing what type of background we want to display 
+    scale_fill_gradientn(colors = c("#9DBF9E", "#FCB97D", "#A84268"), na.value = "grey80")+
+    theme(text = element_text(family = "Futura-Bold", size = 18),
+          legend.position = c(0.87, 0.57),
+          legend.title = element_text(family = "Futura-Bold", size = 16),
+          legend.text = element_text(family = "Futura-Medium", size = 12), 
+          plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
+    labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
+         fill = "Dollars of \nDamage (millions)",
+         title = "Damage caused by flooding in South East Asia from 1980 to 2014"))
+ggsave(plot = Sea_flood_pmap, filename = "img/damage_sea.png", width = 12, height = 8)
 
 
 
