@@ -7,10 +7,8 @@ library(viridis) #for the colors
 library(RColorBrewer) #for some more colors
 library(maps) #for the base map data
 library(hrbrthemes) #for the fonts in ggplot
-library("wesanderson")
+#library("wesanderson")
 library(ggsn)
-
-
 
 #LOADING THE DATASETS ----
 
@@ -18,28 +16,29 @@ flood <- read.csv("Datasets/Geospatial_flooding.csv") #loading in the flood data
 str(flood)
 
 world <- map_data("world") #downloading coordinates for the world,we'll select countries by ourselves
-head(world) 
 str(world)
 
 # DATA WRANGLING----
 
-flood <- flood[-c(1), ] %>% 
+flood <- flood[-c(1), ] %>% #removing the subcategories for each column 
   dplyr::select(Major.Country, Began, Ended, 
                 Death, Affected.population, 
                 Homeless, Damage..USD.if.no.units., Adjusted.Damage.to.2002)
 
+#Renaming the column so they are more consistent 
 colnames(flood) <- c("Country", "Start", "End", "Deaths", 
                      "Affected_population", "Homeless",
                        "Damage_usd", "Adjusted_damage_usd")
 
-str(flood)
+str(flood) #new datasets, they are all character variables which is not what we want 
 
-## Turning all variables into integers/numbers----
+## Turning all variables into appropriate types----
 flood$Country <- as.character(flood$Country)
 flood$Start <- as.integer(flood$Start)
 flood$End <- as.integer(flood$End)
-flood$Deaths <- as.integer(gsub(",", "", flood$Deaths))
-flood$Affected_population <- as.integer(gsub(",", "", flood$Affected_population))
+flood$Deaths <- as.integer(gsub(",", "", flood$Deaths)) #putting nothing instead of the comma in some numbers
+#so r can recognize them as numerics/integers
+flood$Affected_population <- as.numeric(gsub(",", "", flood$Affected_population))
 flood$Homeless <- as.integer(gsub(",", "", flood$Homeless))
 flood$Damage_usd <- as.numeric(gsub(",", "", flood$Damage_usd))
 flood$Adjusted_damage_usd <- as.numeric(gsub(",", "", flood$Adjusted_damage_usd))
@@ -50,16 +49,16 @@ str(flood)
 
 flood <- flood %>% 
   group_by(Country) %>%
-  filter(Start >= 1980) %>%
+  filter(Start >= 1980) %>% #this makes sure to remove everything below 1980 
   ungroup()
 
 unique(flood$Start)
 
-## Countries I selected, South East Asia----
+## South East Asia----
   #Indonesia, Thailand, Vietnam, Malaysia, Philippines, Cambodia
 #TITLE: 35 years of flooding in South-East Asia, the economic and human cost 
   
-SEA1 <- c("Indonesia","Thailand", "Southern Thailand", "Thailand -  Typhoons Ira and Lola",
+SEA1 <- c("Viet Nam", "Indonesia","Thailand", "Southern Thailand", "Thailand -  Typhoons Ira and Lola",
          "Thailand - Typhoon Gay", "Thailand - Typhoon Harry", 
          "Thailand - Typhoons Gloria and Frankie", "Vietnam", "Vietnam - Cyclone Cecil", 
          "Vietnam - Tropical Storm Chip", "Vietnam - Typhoon Fritz", "Vietnam - Typhoon Linda",
@@ -81,6 +80,7 @@ SEA1 <- c("Indonesia","Thailand", "Southern Thailand", "Thailand -  Typhoons Ira
 flood_sea <- flood %>%
   filter(Country %in% SEA1) %>%
   mutate(Country = str_replace(Country, "Southern Thailand", "Thailand")) %>% 
+  mutate(Country = str_replace(Country, "Viet Nam", "Vietnam")) %>% 
   mutate(Country = str_replace(Country, "Thailand -  Typhoons Ira and Lola", "Thailand")) %>% 
   mutate(Country = str_replace(Country, "Thailand - Typhoon Gay", "Thailand")) %>% 
   mutate(Country = str_replace(Country, "Thailand - Typhoon Harry", "Thailand")) %>% 
@@ -111,28 +111,35 @@ flood_sea <- flood %>%
   mutate(Country = str_replace(Country, "Philippines -Typhoon Nell", "Philippines"))
 
 ## Calculating the mean over the years----
-flood_sea <- flood_sea %>%
-  mutate(Country = str_replace(Country, "Philippines - Typhoons Gloring (Gloria) and Huaning (Herb)", "Philippines"))
-  #this doesn't work and idk why 
+#sea_pop <-flood_sea %>% 
+  #group_by(Country) %>%
+  #summarize(Mean_affected_pop = mean(Affected_population, na.rm=TRUE)) %>% 
+  #mutate(tot_Affected_population = sum(Affected_population, na.rm = TRUE)) %>% 
+  #ungroup()
 
-sea_pop <-flood_sea %>% 
-  group_by(Country) %>%
-  summarize(Mean_affected_pop = mean(Affected_population, na.rm=TRUE)) %>% 
-  ungroup()
+### Population----
+sea_pop <- aggregate(x= flood_sea$Affected_population,
+                       by= list(flood_sea$Country),
+                       FUN=sum, na.rm = TRUE)
 
 sea_pop <- sea_pop[-c(5, 6, 7, 8), ]
 
-sea_pop$Mean_affected_pop <- sea_pop$Mean_affected_pop / 100000 #in 100.000 thousands
+colnames(sea_pop) <- c("Country","Affected_population")
 
+sea_pop$Affected_population <- sea_pop$Affected_population / 100000 #in 100.000 thousands
 
-sea_damage <-flood_sea %>% 
-  group_by(Country) %>% 
-  summarize(Mean_damage = mean(Adjusted_damage_usd, na.rm=TRUE)) %>%
-  ungroup()
+### Damage----
+
+sea_damage <- aggregate(x= flood_sea$Adjusted_damage_usd,
+                     by= list(flood_sea$Country),
+                     FUN=sum, na.rm = TRUE)
+
 
 sea_damage <- sea_damage[-c(5, 6, 7, 8), ]
 
-sea_damage$Mean_damage <- sea_damage$Mean_damage / 1000000 #making the numbers in millions 
+colnames(sea_damage) <- c("Country","Adjusted_damage_usd")
+
+sea_damage$Adjusted_damage_usd <- sea_damage$Adjusted_damage_usd / 1000000 #making the numbers in millions 
 
 sea_damage$Country
 
@@ -175,7 +182,7 @@ centroids_sea["4", "Latitude"] <- 17
 ### Population----
 
 (sea_pop_map <- ggplot() +
-    geom_polygon(data = Sea_flood_p, aes(x = long, y = lat, group = group, fill = Mean_affected_pop) 
+    geom_polygon(data = Sea_flood_p, aes(x = long, y = lat, group = group, fill = Affected_population) 
                  , color="black", size = 0.2) + #plot the data points on the map
     theme_void() + #choosing what type of background we want to display 
     coord_map() +
@@ -186,7 +193,7 @@ centroids_sea["4", "Latitude"] <- 17
           legend.position = c(0.87, 0.57),
           legend.title = element_text(family = "Futura-Bold", size = 14),
           legend.text = element_text(family = "Futura-Medium", size = 12), 
-          plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
+          plot.background = element_rect(fill = "white", color = NA)) +
     theme(plot.title = element_text(hjust= 1, size = 20)) +
     labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
          fill = "Affected \npopulation ("~x10^5~ ")",
@@ -200,7 +207,7 @@ Sea_flood_d <- left_join(sea_map, sea_damage, by = c("region" = "Country"))
 str(Sea_flood_d)
 
 (sea_dam_map <- ggplot() +
-    geom_polygon(data = Sea_flood_d, aes(x = long, y = lat, group = group, fill = Mean_damage) 
+    geom_polygon(data = Sea_flood_d, aes(x = long, y = lat, group = group, fill = Adjusted_damage_usd) 
                  , color="black", size = 0.2) + #plot the data points on the map
     theme_void() + #choosing what type of background we want to display
     coord_map() +
@@ -210,7 +217,7 @@ str(Sea_flood_d)
           legend.position = c(0.87, 0.57),
           legend.title = element_text(family = "Futura-Bold", size = 14),
           legend.text = element_text(family = "Futura-Medium", size = 12), 
-          plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
+          plot.background = element_rect(fill = "white", color = NA)) +
     theme(plot.title = element_text(hjust= 1, size = 20)) +
     labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
          fill = "Damage \n(million USD)",
@@ -221,19 +228,19 @@ str(Sea_flood_d)
 ## Adding scale----
 
 ### Population----
-(sea_pop_map2 <- sea_pop_map +
+(final_sea_pop <- sea_pop_map +
    ggsn::scalebar(data = sea_map,
                   transform = TRUE, dist = 500, dist_unit = "km", model='WGS84',
                   height = 0.009, location = "bottomleft", st.dist = 0.06))
-#ggsave(plot = sea_pop_map2, filename = "img/affected_populatio_sea.png", width = 12, height = 8)
+#ggsave(plot = final_sea_pop, filename = "img/affected_populatio_sea.png", width = 12, height = 8)
 
 ### Damage----
-(sea_dam_map2 <- sea_dam_map +
+(final_sea_dam <- sea_dam_map +
    ggsn::scalebar(data = sea_map,
                   transform = TRUE, dist = 500, dist_unit = "km", model='WGS84',
                   height = 0.009, location = "bottomleft", st.dist = 0.06))
 
-#ggsave(plot = sea_dam_map2, filename = "img/damage_$_sea.png", width = 12, height = 8)
+#ggsave(plot = final_sea_dam, filename = "img/damage_$_sea.png", width = 12, height = 8)
 
 ## Making an insert map---- 
 
