@@ -139,7 +139,7 @@ sea_damage <- sea_damage[-c(5, 6, 7, 8), ]
 
 colnames(sea_damage) <- c("Country","Adjusted_damage_usd")
 
-sea_damage$Adjusted_damage_usd <- sea_damage$Adjusted_damage_usd / 1000000 #making the numbers in millions 
+sea_damage$Adjusted_damage_usd <- sea_damage$Adjusted_damage_usd / 1000000000 #making the numbers in millions 
 
 sea_damage$Country
 
@@ -220,7 +220,7 @@ str(Sea_flood_d)
           plot.background = element_rect(fill = "white", color = NA)) +
     theme(plot.title = element_text(hjust= 1, size = 20)) +
     labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
-         fill = "Damage \n(million USD)",
+         fill = "Damage \n(billion USD)",
          title = "\nDamage caused by flooding in South East Asia from 1980 to 2014"))
 
 #ggsave(plot = sea_dam_map, filename = "img/damage_$_sea.png", width = 12, height = 8)
