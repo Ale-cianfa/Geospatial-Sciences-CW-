@@ -23,12 +23,12 @@ str(world)
 flood <- flood[-c(1), ] %>% #removing the subcategories for each column 
   dplyr::select(Major.Country, Began, Ended, 
                 Death, Affected.population, 
-                Homeless, Damage..USD.if.no.units., Adjusted.Damage.to.2002)
+                Homeless, Damage..USD.if.no.units., Adjusted.Damage.to.2002, Reference)
 
 #Renaming the column so they are more consistent 
 colnames(flood) <- c("Country", "Start", "End", "Deaths", 
                      "Affected_population", "Homeless",
-                     "Damage_usd", "Adjusted_damage_usd")
+                     "Damage_usd", "Adjusted_damage_usd", "Reference")
 
 str(flood) #new datasets, they are all character variables which is not what we want 
 
@@ -62,7 +62,7 @@ flood_sa <- flood %>%
   filter(Country %in% SA) %>%
   mutate(Country = str_replace(Country, "Southeastern India", "India")) %>% 
   mutate(Country = str_replace(Country, "India, Bangladesh", "India")) 
-
+unique(flood_sa$Reference)
 #CREATING NEW SUMMARY DF FOR DAMAGE AND POP----
 
 ##Population----
@@ -110,14 +110,14 @@ centroids_sa <- centroids %>%
                 , color="black", size = 0.2) + #plot the data points on the map
    theme_void() + #choosing what type of background we want to display 
    coord_map() +
-   geom_text(data = centroids_sa, aes(Longitude, Latitude, label = iso_a3), size = 2.9) +
+   geom_text(data = centroids_sa, aes(Longitude, Latitude, label = iso_a3), size = 5) +
    #scale_fill_gradientn(colors = c("#9DBF9E", "#FCB97D", "#A84268"), na.value = "grey80")+
    scale_fill_gradientn(colors = c("#94d2bd", "#0a9396", "#005f73"), na.value = "grey80")+
    theme(plot.title = element_text(family = "Futura-Bold", size = 20),
          legend.position = c(0.05, 0.30),
          legend.title = element_text(family = "Futura-Bold", size = 14),
          legend.text = element_text(family = "Futura-Medium", size = 12), 
-         plot.background = element_rect(fill = "white", color = NA)) +
+         plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
    theme(plot.title = element_text(hjust= 1, size = 20)) +
    labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
         fill = "Affected \npopulation ("~x10^5~ ")",
@@ -136,13 +136,13 @@ str(Sa_flood_d)
     theme_void() + #choosing what type of background we want to display
     coord_map() +
     scale_fill_gradientn(colors = c("#ee9b00", "#bb3e03", "#ae2012"), na.value = "grey80") +
-    geom_text(data = centroids_sa, aes(Longitude, Latitude, label = iso_a3), size = 2.9) +
+    geom_text(data = centroids_sa, aes(Longitude, Latitude, label = iso_a3), size = 5) +
     theme(plot.title = element_text(family = "Futura-Bold", size = 20),
           legend.position = c(0.1, 0.30),
           legend.title = element_text(family = "Futura-Bold", size = 14),
           legend.text = element_text(family = "Futura-Medium", size = 12), 
-          plot.background = element_rect(fill = "white", color = NA)) +
-    theme(plot.title = element_text(hjust= 1, size = 20)) +
+          plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
+    theme(plot.title = element_text(hjust= 1.32, size = 20)) +
     labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
          fill = "Damage \n(billion USD)",
          title = "\nDamage caused by flooding in South Asia from 1980 to 2014"))
@@ -165,8 +165,6 @@ str(Sa_flood_d)
                   height = 0.009, location = "bottomleft", st.dist = 0.06))
 
 #ggsave(plot = final_sa_dam, filename = "img/damage_$_sa.png", width = 12, height = 8)
-
-## Making an insert map---- 
 
 
 
