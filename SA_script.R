@@ -70,7 +70,7 @@ sa_pop <- aggregate(x= flood_sa$Affected_population,
                      by= list(flood_sa$Country),
                      FUN=sum, na.rm = TRUE)  
 colnames(sa_pop) <- c("Country","Affected_population")
-sa_pop$Affected_population <- sa_pop$Affected_population / 100000 #in 100.000 thousands
+sa_pop$Affected_population <- sa_pop$Affected_population / 1000000 #in millions
 
 ##Damage----
 sa_damage <- aggregate(x= flood_sa$Adjusted_damage_usd,
@@ -79,7 +79,7 @@ sa_damage <- aggregate(x= flood_sa$Adjusted_damage_usd,
 
 colnames(sa_damage) <- c("Country","Adjusted_damage_usd")
 
-sa_damage$Adjusted_damage_usd <- sa_damage$Adjusted_damage_usd / 1000000000 #making the numbers in millions 
+sa_damage$Adjusted_damage_usd <- sa_damage$Adjusted_damage_usd / 1000000000 #making the numbers in billions 
 
 #MAPPING----
 ## Filtering world map for SA----
@@ -110,18 +110,18 @@ centroids_sa <- centroids %>%
                 , color="black", size = 0.2) + #plot the data points on the map
    theme_void() + #choosing what type of background we want to display 
    coord_map() +
-   geom_text(data = centroids_sa, aes(Longitude, Latitude, label = iso_a3), size = 5) +
+   geom_text(data = centroids_sa, aes(Longitude, Latitude, label = name), size = 5) +
    #scale_fill_gradientn(colors = c("#9DBF9E", "#FCB97D", "#A84268"), na.value = "grey80")+
    scale_fill_gradientn(colors = c("#94d2bd", "#0a9396", "#005f73"), na.value = "grey80")+
    theme(plot.title = element_text(family = "Futura-Bold", size = 20),
-         legend.position = c(0.05, 0.30),
+         legend.position = c(0.1, 0.30),
          legend.title = element_text(family = "Futura-Bold", size = 14),
          legend.text = element_text(family = "Futura-Medium", size = 12), 
          plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
-   theme(plot.title = element_text(hjust= 1, size = 20)) +
+   theme(plot.title = element_text(hjust= 0, size = 20)) +
    labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
-        fill = "Affected \npopulation ("~x10^5~ ")",
-        title = "\nPopulation affected by flooding in South Asia from 1980 to 2014"))
+        fill = "Affected \npopulation \n(millions)",
+        title = "\nPopulation affected by flooding"))
 
 #ggsave(plot = sa_pop_map, filename = "img/affected_populatio_sa.png", width = 12, height = 8)
 
@@ -136,16 +136,16 @@ str(Sa_flood_d)
     theme_void() + #choosing what type of background we want to display
     coord_map() +
     scale_fill_gradientn(colors = c("#ee9b00", "#bb3e03", "#ae2012"), na.value = "grey80") +
-    geom_text(data = centroids_sa, aes(Longitude, Latitude, label = iso_a3), size = 5) +
+    geom_text(data = centroids_sa, aes(Longitude, Latitude, label = name), size = 5) +
     theme(plot.title = element_text(family = "Futura-Bold", size = 20),
           legend.position = c(0.1, 0.30),
           legend.title = element_text(family = "Futura-Bold", size = 14),
           legend.text = element_text(family = "Futura-Medium", size = 12), 
           plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
-    theme(plot.title = element_text(hjust= 1.32, size = 20)) +
+    theme(plot.title = element_text(hjust= 0, size = 20)) +
     labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
          fill = "Damage \n(billion USD)",
-         title = "\nDamage caused by flooding in South Asia from 1980 to 2014"))
+         title = "\nDamage caused by flooding"))
 
 #ggsave(plot = sa_dam_map, filename = "img/damage_$_sa.png", width = 12, height = 8)
 
@@ -156,7 +156,7 @@ str(Sa_flood_d)
    ggsn::scalebar(data = sa_map,
                   transform = TRUE, dist = 500, dist_unit = "km", model='WGS84',
                   height = 0.009, location = "bottomleft", st.dist = 0.06))
-#ggsave(plot = final_sa_pop, filename = "img/affected_populatio_sa.png", width = 12, height = 8)
+ggsave(plot = final_sa_pop, filename = "img/affected_populatio_sa.png", width = 12, height = 8)
 
 ### Damage----
 (final_sa_dam <- sa_dam_map +
@@ -164,12 +164,44 @@ str(Sa_flood_d)
                   transform = TRUE, dist = 500, dist_unit = "km", model='WGS84',
                   height = 0.009, location = "bottomleft", st.dist = 0.06))
 
-#ggsave(plot = final_sa_dam, filename = "img/damage_$_sa.png", width = 12, height = 8)
+ggsave(plot = final_sa_dam, filename = "img/damage_$_sa.png", width = 12, height = 8)
+
+## prova colori----
+(sa_pop_map1 <- ggplot() +
+   geom_polygon(data = Sa_flood_p, aes(x = long, y = lat, group = group, fill = Affected_population) 
+                , color="black", size = 0.2) + #plot the data points on the map
+   theme_void() + #choosing what type of background we want to display 
+   coord_map() +
+   geom_text(data = centroids_sa, aes(Longitude, Latitude, label = name), size = 5) +
+   scale_fill_gradientn(colors = c("#a5c1ae", "#568d66", "#2b6a4d"), na.value = "grey80")+
+   theme(plot.title = element_text(family = "Futura-Bold", size = 20),
+         legend.position = c(0.1, 0.30),
+         legend.title = element_text(family = "Futura-Bold", size = 14),
+         legend.text = element_text(family = "Futura-Medium", size = 12), 
+         plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
+   theme(plot.title = element_text(hjust= 0, size = 20)) +
+   labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
+        fill = "Affected \npopulation \n(millions)",
+        title = "\nPopulation affected by flooding"))
 
 
 
-
-
+(sa_dam_map1 <- ggplot() +
+    geom_polygon(data = Sa_flood_d, aes(x = long, y = lat, group = group, fill = Adjusted_damage_usd) 
+                 , color="black", size = 0.2) + #plot the data points on the map
+    theme_void() + #choosing what type of background we want to display
+    coord_map() +
+    scale_fill_gradientn(colors = c("#df8080", "#cb0b0a", "#ad080f"), na.value = "grey80") +
+    geom_text(data = centroids_sa, aes(Longitude, Latitude, label = name), size = 5) +
+    theme(plot.title = element_text(family = "Futura-Bold", size = 20),
+          legend.position = c(0.1, 0.30),
+          legend.title = element_text(family = "Futura-Bold", size = 14),
+          legend.text = element_text(family = "Futura-Medium", size = 12), 
+          plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
+    theme(plot.title = element_text(hjust= 0, size = 20)) +
+    labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
+         fill = "Damage \n(billion USD)",
+         title = "\nDamage caused by flooding"))
 
 
   
