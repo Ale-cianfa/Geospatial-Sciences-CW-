@@ -101,6 +101,7 @@ str(centroids)
 centroids_sa <- centroids %>% 
   filter(name %in% Sa_2) %>% 
   dplyr::select(name, Longitude, Latitude, iso_a3) 
+
 ## Making the two maps----
 
 ### Population----
@@ -121,7 +122,7 @@ centroids_sa <- centroids %>%
    theme(plot.title = element_text(hjust= 0, size = 20)) +
    labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
         fill = "Affected \npopulation \n(millions)",
-        title = "\nPopulation affected by flooding"))
+        title = "\nPopulation affected by flooding in South Asia"))
 
 #ggsave(plot = sa_pop_map, filename = "img/affected_populatio_sa.png", width = 12, height = 8)
 
@@ -145,7 +146,7 @@ str(Sa_flood_d)
     theme(plot.title = element_text(hjust= 0, size = 20)) +
     labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
          fill = "Damage \n(billion USD)",
-         title = "\nDamage caused by flooding"))
+         title = "\nDamage caused by flooding in South Asia"))
 
 #ggsave(plot = sa_dam_map, filename = "img/damage_$_sa.png", width = 12, height = 8)
 
@@ -156,7 +157,7 @@ str(Sa_flood_d)
    ggsn::scalebar(data = sa_map,
                   transform = TRUE, dist = 500, dist_unit = "km", model='WGS84',
                   height = 0.009, location = "bottomleft", st.dist = 0.06))
-ggsave(plot = final_sa_pop, filename = "img/affected_populatio_sa.png", width = 12, height = 8)
+#ggsave(plot = final_sa_pop, filename = "img/affected_populatio_sa.png", width = 12, height = 8)
 
 ### Damage----
 (final_sa_dam <- sa_dam_map +
@@ -164,46 +165,51 @@ ggsave(plot = final_sa_pop, filename = "img/affected_populatio_sa.png", width = 
                   transform = TRUE, dist = 500, dist_unit = "km", model='WGS84',
                   height = 0.009, location = "bottomleft", st.dist = 0.06))
 
-ggsave(plot = final_sa_dam, filename = "img/damage_$_sa.png", width = 12, height = 8)
+#ggsave(plot = final_sa_dam, filename = "img/damage_$_sa.png", width = 12, height = 8)
 
-## prova colori----
-(sa_pop_map1 <- ggplot() +
-   geom_polygon(data = Sa_flood_p, aes(x = long, y = lat, group = group, fill = Affected_population) 
-                , color="black", size = 0.2) + #plot the data points on the map
-   theme_void() + #choosing what type of background we want to display 
-   coord_map() +
-   geom_text(data = centroids_sa, aes(Longitude, Latitude, label = name), size = 5) +
-   scale_fill_gradientn(colors = c("#a5c1ae", "#568d66", "#2b6a4d"), na.value = "grey80")+
-   theme(plot.title = element_text(family = "Futura-Bold", size = 20),
-         legend.position = c(0.1, 0.30),
-         legend.title = element_text(family = "Futura-Bold", size = 14),
-         legend.text = element_text(family = "Futura-Medium", size = 12), 
-         plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
-   theme(plot.title = element_text(hjust= 0, size = 20)) +
-   labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
-        fill = "Affected \npopulation \n(millions)",
-        title = "\nPopulation affected by flooding"))
+## Stacked Plot----
+Sa_flood_d$region <- as.factor(Sa_flood_d$region)  # Change to factor
+levels(Sa_flood_d$region)  # Show factor levels in their default order
 
+### 
+f_1980 <- sum(ifelse(Sa_flood_d$year == "1980", forest$f_area_mln, 0))  # Total cover in 1990
+f_2016 <- sum(ifelse(forest$year == "2016", forest$f_area_mln, 0))  # Total cover in 2016
+f_tot_diff <- round(f_1990 - f_2016, digits = 2)  # Total difference in forest cover
+f_perc_diff <- round((f_1990 - f_2016) * 100 / f_1990, digits = 2)  # Percentage difference in forest cover
 
-
-(sa_dam_map1 <- ggplot() +
-    geom_polygon(data = Sa_flood_d, aes(x = long, y = lat, group = group, fill = Adjusted_damage_usd) 
-                 , color="black", size = 0.2) + #plot the data points on the map
-    theme_void() + #choosing what type of background we want to display
-    coord_map() +
-    scale_fill_gradientn(colors = c("#df8080", "#cb0b0a", "#ad080f"), na.value = "grey80") +
-    geom_text(data = centroids_sa, aes(Longitude, Latitude, label = name), size = 5) +
-    theme(plot.title = element_text(family = "Futura-Bold", size = 20),
-          legend.position = c(0.1, 0.30),
-          legend.title = element_text(family = "Futura-Bold", size = 14),
-          legend.text = element_text(family = "Futura-Medium", size = 12), 
-          plot.background = element_rect(fill = "#f5f5f2", color = NA)) +
-    theme(plot.title = element_text(hjust= 0, size = 20)) +
-    labs(y = "Latitude", x = "Longitude", #labs can be used to rename the axis and titles of your plots
-         fill = "Damage \n(billion USD)",
-         title = "\nDamage caused by flooding"))
-
-
+(stacked <- ggplot(forest, aes(x = year , y = f_area_mln, fill = Country.Name)) + 
+    geom_area(alpha=0.8 , size=.2, color = "black") +  # This is the color of the lines between countries
+    theme_minimal() +
+    bbc_style() +  # Add the bbc style
+    coord_cartesian(xlim = c(1990, 2017), 
+                    ylim = c(0, 10)) +  # Determine axis limits
+    scale_fill_manual(values = c("slategray", "#ABB4C4", "#ABBCDB", "#AAC9E0", 
+                                 "#548FB3", "#4682B5", "#34648F", "#366281", 
+                                 "#384B87", "#0B2475", "#5D6166", "#071721")) +  # Set the colour palette
+    scale_x_continuous(labels = c(1990,2000,2010,2020)) +  # Determine x-axis labels
+    geom_vline(xintercept = 2016, colour = "black", linetype = "dotted", size = 1) +  # Add vertical orientation line
+    geom_hline(yintercept = f_1990, colour = "black", linetype = "dotted", size = 1) +  # Add horizontal orientation line
+    geom_segment(aes(x = 2016, y = f_2016, xend = 2016, yend = f_1990),
+                 colour = "red", linetype = "solid", size = 2) +  # Highlight the changes of total forest cover
+    theme(plot.title = element_text(size = 12, hjust = 0.5),
+          legend.position = "right",
+          legend.text = element_text(size = 12),
+          legend.title = element_text(size = 14),
+          axis.title = element_text(size = 14),
+          axis.text.x = element_text(size = 11),
+          axis.text.y = element_text(size = 11),
+          plot.margin = unit(c(0.5,0.5,0.5,0.5), units = , "cm")) +
+    annotate("text", x = 2006, y = 9.6, colour = "black",
+             label = paste("In 25 years South America lost \n", f_tot_diff,
+                           "million sq km of forests (", f_perc_diff, "%)"),
+             size = 3.5, fontface = "italic") +  # Add annotation
+    geom_curve(aes(x = 2009, y = 9.27, xend = 2015.5, yend = 8.7),
+               arrow = arrow(length = unit(0.07, "inch")), size = 0.5,
+               color = "black", curvature = 0.3) +  # Add an arrow 
+    labs(title = "Brazil's forests at risk",
+         fill = "Countries",
+         y = expression(paste("Forest cover (million ", km^2, ")")),
+         x = "Year")  # Add the lab titles
   
   
 
